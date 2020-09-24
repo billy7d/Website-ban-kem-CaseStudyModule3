@@ -2,7 +2,7 @@ package model;
 
 import java.util.List;
 
-public class Order {
+public class Orders {
     private int orderId;
     private String nameCustomer;
     private String addressCustomer;
@@ -10,16 +10,16 @@ public class Order {
     private List<Item> items;
     private double totalMoney;
 
-    public Order(){
+    public Orders(){
     }
 
-    public Order(String nameCustomer, String addressCustomer, String numberPhoneCustomer){
+    public Orders(String nameCustomer, String addressCustomer, String numberPhoneCustomer){
         this.nameCustomer = nameCustomer;
         this.addressCustomer = addressCustomer;
         this.numberPhoneCustomer = numberPhoneCustomer;
     }
 
-    public Order(String nameCustomer, String addressCustomer, String numberPhoneCustomer, List<Item> items){
+    public Orders(String nameCustomer, String addressCustomer, String numberPhoneCustomer, List<Item> items){
         this.nameCustomer = nameCustomer;
         this.addressCustomer = addressCustomer;
         this.numberPhoneCustomer = numberPhoneCustomer;

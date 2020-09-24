@@ -1,15 +1,15 @@
 package model;
 
-public class User {
+public class Users {
     private int idUser;
     private String userName;
     private String userPassword;
     private String userEmail;
 
-    public User(){
+    public Users(){
     }
 
-    public User(String userName, String userPassword, String userEmail){
+    public Users(String userName, String userPassword, String userEmail){
         this.userName = userName;
         this.userPassword = userPassword;
         this.userEmail = userEmail;
