@@ -8,15 +8,17 @@ public class IceCream {
     private String description;
     private int discount;
     private int soldQuantity;
+    private String src;
 
     public IceCream(){
     }
 
-    public IceCream(int categoryId, String name, double price, String description){
+    public IceCream(int categoryId, String name, double price, String description, String src){
         this.categoryId = categoryId;
         this.name = name;
         this.price = price;
         this.description = description;
+        this.src = src;
     }
 
     public int getIdIceCream() {

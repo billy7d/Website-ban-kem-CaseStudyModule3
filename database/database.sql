@@ -20,6 +20,7 @@ name varchar(255) NOT NULL,
 discount int,
 ice_description text,
 price double(10,3) NOT NULL,
+scr text,
 sold_quantity int,
 foreign key (category_id) references category(category_id)
  );
@@ -38,6 +39,7 @@ foreign key (category_id) references category(category_id)
  ice_cream_id int,
  pice_discount double(10,3) NOT NULL,
  quality int NOT NULL,
+ total_money double (10,3)
  foreign key (order_id) references orders (order_id),
  foreign key (ice_cream_id) references ice_cream(ice_cream_id)
  );
