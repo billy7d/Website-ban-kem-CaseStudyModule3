@@ -43,5 +43,85 @@ foreign key (category_id) references category(category_id)
  foreign key (order_id) references orders (order_id),
  foreign key (ice_cream_id) references ice_cream(ice_cream_id)
  );
+
+--PROCEDURE
+
+DELIMITER $$
+CREATE PROCEDURE get_ice_cream_by_category(IN category__id INT)
+BEGIN
+    SELECT ice_cream.ice_cream_id, ice_cream.category_id ,ice_cream.name ,ice_cream.discount, ice_cream.ice_description, ice_cream.price, ice_cream.sold_quantity, ice_cream.src
+    FROM ice_cream
+    join category on ice_cream.category_id = category.category_id
+	where ice_cream.category_id = category__id;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE sort_ice_cream_by_price()
+begin
+	SELECT ice_cream.ice_cream_id, ice_cream.category_id ,ice_cream.name ,ice_cream.discount, ice_cream.ice_description, ice_cream.price, ice_cream.sold_quantity, ice_cream.src
+	FROM ice_cream
+    ORDER BY ice_cream.price;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE sort_ice_cream_by_quantity()
+begin
+	SELECT ice_cream.ice_cream_id, ice_cream.category_id ,ice_cream.name ,ice_cream.discount, ice_cream.ice_description, ice_cream.price, ice_cream.sold_quantity, ice_cream.src
+	FROM ice_cream
+    ORDER BY ice_cream.sold_quantity;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+
+DELIMITER $$
+CREATE procedure update_IceCream(in ice_cream_id int, in category_id int,in name varchar(255),in discount int, in ice_description text, in price double(10,3), in scr text, in sold_quantity int)
+BEGIN
+UPDATE ice_cream
+SET category_id = category_id, name = name, discount = discount, ice_description = ice_description, price = price, sold_quantity = sold_quantity, scr = scr
+WHERE ice_cream_id = ice_cream_id;
+END $$
+DELIMITER $$
+
+
+DELIMITER //
+CREATE procedure insert_IceCream(in category_id int,in name varchar(255),in discount int,
+in ice_description text, in price double(10,3), in scr text, in sold_quantity int)
+BEGIN
+INSERT INTO ice_cream(category_id,name,discount,ice_description,price,src,sold_quantity)
+VALUES (category_id,name,discount,ice_description,price,src,sold_quantity);
+END //
+DELIMITER //
+
+
+DELIMITER //
+CREATE PROCEDURE select_all_ice()
+BEGIN
+SELECT * FROM ice_cream;
+END //
+DELIMITER //
+
+
+DELIMITER //
+CREATE procedure delete_ice(in id int)
+BEGIN
+delete from ice_cream where ice_cream.ice_cream_id = id;
+END //
+DELIMITER //
+
+
+DELIMITER //
+CREATE procedure search_ice_cream_by_id(in id int)
+BEGIN
+SELECT ice_cream.ice_cream_id, ice_cream.category_id ,ice_cream.name ,ice_cream.discount, ice_cream.ice_description, ice_cream.price, ice_cream.sold_quantity, ice_cream.src
+FROM ice_cream
+Where ice_cream.ice_cream_id = id;
+END //
+DELIMITER //
+
+
+
  
  

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface IiceCreamDAO {
-    public void insertIceCream(IceCream iceCream) throws SQLException;
+    public boolean insertIceCream(IceCream iceCream) throws SQLException;
 
     public List<IceCream> selectAllIceCream() throws SQLException;
 
@@ -17,7 +17,7 @@ public interface IiceCreamDAO {
 
     public IceCream searchIceCream(int id)throws SQLException;
 
-    public List<IceCream> searchIceCreamByCategory(String idCategory);
+    public List<IceCream> searchIceCreamByCategory(int idCategory) throws SQLException;
 
     public List<IceCream> searchIceCreamByName(String name)throws SQLException;
 

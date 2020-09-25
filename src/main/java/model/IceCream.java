@@ -4,7 +4,7 @@ public class IceCream {
     private int iceCreamId;
     private int categoryId;
     private String name;
-    private Double price;
+    private double price;
     private String description;
     private int discount;
     private int soldQuantity;
@@ -21,12 +21,15 @@ public class IceCream {
         this.src = src;
     }
 
-    public int getIdIceCream() {
-        return iceCreamId;
-    }
-
-    public void setIdIceCream(int idIceCream) {
-        this.iceCreamId = idIceCream;
+    public IceCream(int iceCreamId,int categoryId, String name, double price, int discount, String description, int soldQuantity ,String src){
+        this.iceCreamId = iceCreamId;
+        this.categoryId = categoryId;
+        this.name = name;
+        this.price = price;
+        this.discount = discount;
+        this.description = description;
+        this.soldQuantity = soldQuantity;
+        this.src = src;
     }
 
     public int getCategoryId() {
@@ -49,7 +52,7 @@ public class IceCream {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -75,5 +78,21 @@ public class IceCream {
 
     public void setSoldQuantity(int soldQuantity) {
         this.soldQuantity = soldQuantity;
+    }
+
+    public int getIceCreamId() {
+        return iceCreamId;
+    }
+
+    public void setIceCreamId(int iceCreamId) {
+        this.iceCreamId = iceCreamId;
+    }
+
+    public String getSrc() {
+        return src;
+    }
+
+    public void setSrc(String src) {
+        this.src = src;
     }
 }
