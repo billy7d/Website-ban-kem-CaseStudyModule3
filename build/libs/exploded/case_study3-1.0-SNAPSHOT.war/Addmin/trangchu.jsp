@@ -74,6 +74,9 @@
             <li class="nav-item">
                 <button type="button" class="btn btn-outline-danger" style=" position:absolute ; right: 15px; top:auto" >Log in</button>
             </li>
+            <li>
+                <button style="font-size:21px; color: hotpink; border-color: hotpink ; position:absolute ; right: 110px">Button <i class="fa fa-shopping-cart"></i></button>
+            </li>
         </ul>
     </div>
 </nav>
@@ -131,10 +134,13 @@
                 <div class="card"  style="width: 262px;">
                     <img class="card-img-top" src="${iceCream.src}">
                     <div class="card-body">
+                        <input type="text" disabled value="${iceCream.iceCreamId}"/>
                         <h4 class="card-title"><c:out value="${iceCream.name}"/></h4>
                         <h5><c:out value="${iceCream.price}"/> </h5>
                         <p class="card-text"><c:out value="${iceCream.description}"/></p>
                         <a href="#" class="btn btn-primary">Order</a>
+                        <a href="trangchu?action=edit" class="btn btn-primary">Edit</a>
+                        <a href="trangchu?action=delete" class="btn btn-primary">Delete</a>
                     </div>
                 </div>
             </div>

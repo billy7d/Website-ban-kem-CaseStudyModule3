@@ -1,5 +1,15 @@
+model/Category.java
+ model.Category
 model/Orders.java
  model.Orders
+model/Users.java
+ model.Users
+service/IUserDAO.java
+ service.IUserDAO
+model/Item.java
+ model.Item
+service/UserDAO.java
+ service.UserDAO
 service/IceCreamDAO.java
  service.IceCreamDAO
 model/IceCream.java
@@ -8,15 +18,5 @@ service/copyIceCreamDAO.java
  service.copyIceCreamDAO
 service/IiceCreamDAO.java
  service.IiceCreamDAO
-service/UserDAO.java
- service.UserDAO
-model/Users.java
- model.Users
-model/Item.java
- model.Item
-service/IUserDAO.java
- service.IUserDAO
-model/Category.java
- model.Category
 controller/UserServlet.java
  controller.UserServlet

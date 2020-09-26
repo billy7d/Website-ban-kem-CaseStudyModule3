@@ -32,6 +32,15 @@ public class IceCream {
         this.src = src;
     }
 
+    public IceCream(int categoryId, String name, double price, int discount, String description, int soldQuantity ,String src){
+        this.categoryId = categoryId;
+        this.name = name;
+        this.price = price;
+        this.discount = discount;
+        this.description = description;
+        this.soldQuantity = soldQuantity;
+        this.src = src;
+    }
     public int getCategoryId() {
         return categoryId;
     }

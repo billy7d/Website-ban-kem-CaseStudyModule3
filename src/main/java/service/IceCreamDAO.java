@@ -9,7 +9,7 @@ import java.util.List;
 public class IceCreamDAO implements IiceCreamDAO {
     private String jdbcURL="jdbc:mysql://localhost:3306/ice_cream_shop?userSSL=false";
     private String jdbcUsername = "root";
-    private String jbdcPassword = "123456";
+    private String jbdcPassword = "hung30111995";
 
 
     public IceCreamDAO(){
