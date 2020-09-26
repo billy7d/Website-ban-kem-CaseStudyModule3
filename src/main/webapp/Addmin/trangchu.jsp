@@ -1,9 +1,9 @@
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
-  User: PC
-  Date: 24/09/2020
-  Time: 20:25
+  User: KimShin
+  Date: 9/26/2020
+  Time: 10:21 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -13,8 +13,11 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="../../../bootstrap-4.5.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 </head>
 <style>
     .carousel-inner img{
@@ -66,10 +69,10 @@
                 <a class="nav-link" href="#">Discounts</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">hahaha</a>
+                <a class="nav-link" href="#">Funfacts</a>
             </li>
             <li class="nav-item">
-                <button type="button" class="btn btn-outline-danger" style=" right: 15px; top:auto" >Log in</button>
+                <button type="button" class="btn btn-outline-danger" style=" position:absolute ; right: 15px; top:auto" >Log in</button>
             </li>
         </ul>
     </div>
@@ -123,74 +126,19 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <div class="card"  style="width: 262px;">
-                <img class="card-img-top" src="https://i.pinimg.com/564x/29/b1/a0/29b1a0a2b674398ce1cbfe7bfd8185af.jpg">
-                <div class="card-body">
-                    <h4 class="card-title">Kem Oc Que</h4>
-                    <h5>56.000VND</h5>
-                    <p class="card-text">Kem ngon</p>
-                    <a href="#" class="btn btn-primary">Order</a>
+        <c:forEach var="iceCream" items="${listIceCream}" >
+            <div class="col-sm-6 col-md-4">
+                <div class="card"  style="width: 262px;">
+                    <img class="card-img-top" src="${iceCream.src}">
+                    <div class="card-body">
+                        <h4 class="card-title"><c:out value="${iceCream.name}"/></h4>
+                        <h5><c:out value="${iceCream.price}"/> </h5>
+                        <p class="card-text"><c:out value="${iceCream.description}"/></p>
+                        <a href="#" class="btn btn-primary">Order</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <div class="card" style="width: 262px;">
-                <img class="card-img-top" src="https://i.pinimg.com/564x/29/b1/a0/29b1a0a2b674398ce1cbfe7bfd8185af.jpg">
-                <div class="card-body">
-                    <h4 class="card-title">Kem Oc Que</h4>
-                    <h5>56.000VND</h5>
-                    <p class="card-text">Kem ngon</p>
-                    <a href="#" class="btn btn-primary">Order</a>
-                </div>
-            </div>
-        </div>
-        <div class=" col-md-4">
-            <div class="card" style="width: 262px;">
-                <img class="card-img-top" src="https://i.pinimg.com/564x/29/b1/a0/29b1a0a2b674398ce1cbfe7bfd8185af.jpg">
-                <div class="card-body">
-                    <h4 class="card-title">Kem Oc Que</h4>
-                    <h5>56.000VND</h5>
-                    <p class="card-text">Kem ngon</p>
-                    <a href="#" class="btn btn-primary">Order</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <div class="card"  style="width: 262px;">
-                <img class="card-img-top" src="https://i.pinimg.com/564x/29/b1/a0/29b1a0a2b674398ce1cbfe7bfd8185af.jpg">
-                <div class="card-body">
-                    <h4 class="card-title">Kem Oc Que</h4>
-                    <h5>56.000VND</h5>
-                    <p class="card-text">Kem ngon</p>
-                    <a href="#" class="btn btn-primary">Order</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <div class="card" style="width: 262px;">
-                <img class="card-img-top" src="https://i.pinimg.com/564x/29/b1/a0/29b1a0a2b674398ce1cbfe7bfd8185af.jpg">
-                <div class="card-body">
-                    <h4 class="card-title">Kem Oc Que</h4>
-                    <h5>56.000VND</h5>
-                    <p class="card-text">Kem ngon</p>
-                    <a href="#" class="btn btn-primary">Order</a>
-                </div>
-            </div>
-        </div>
-        <div class=" col-md-4">
-            <div class="card" style="width: 262px;">
-                <img class="card-img-top" src="https://i.pinimg.com/564x/29/b1/a0/29b1a0a2b674398ce1cbfe7bfd8185af.jpg">
-                <div class="card-body">
-                    <h4 class="card-title">Kem Oc Que</h4>
-                    <h5>56.000VND</h5>
-                    <p class="card-text">Kem ngon</p>
-                    <a href="#" class="btn btn-primary">Order</a>
-                </div>
-            </div>
-        </div>
+        </c:forEach>
     </div>
 </div>
 <div class="container-fluid">
@@ -201,7 +149,8 @@
     </div>
 </div>
 </body>
+<script src="../../../bootstrap-4.5.2-dist/js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="../../../bootstrap-4.5.2-dist/js/bootstrap.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </html>
