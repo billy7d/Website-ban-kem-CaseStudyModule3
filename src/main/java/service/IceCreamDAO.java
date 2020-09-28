@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IceCreamDAO implements IiceCreamDAO {
+    private static final String UPDATE_ICECREAM = "update ice_cream SET category_id = ?, name = ?, discount = ?, ice_description = ?, price = ?, sold_quantity = ?, src = ? WHERE ice_cream_id = ? " ;
     private String jdbcURL="jdbc:mysql://localhost:3306/ice_cream_shop?userSSL=false";
     private String jdbcUsername = "root";
     private String jbdcPassword = "123456";
@@ -42,8 +43,7 @@ public class IceCreamDAO implements IiceCreamDAO {
             callableStatement.setDouble(5,iceCream.getPrice());
             callableStatement.setString(6,iceCream.getSrc());
             callableStatement.setInt(7,iceCream.getSoldQuantity());
-            System.out.println(callableStatement);
-            isInsertIceCream = callableStatement.executeUpdate() > 0;
+            callableStatement.executeUpdate();
         } catch (SQLException e){
             e.getMessage();
             e.printStackTrace();
@@ -95,30 +95,26 @@ public class IceCreamDAO implements IiceCreamDAO {
 
     @Override
     public boolean updateIceCream(IceCream iceCream) throws SQLException {
-        boolean updateIceCream = false;
-        String query = "{call update_IceCream(?,?,?,?,?,?,?,?);}";
+        boolean updateIceCream ;
         try(Connection connection = getConnection();
-            CallableStatement callableStatement = connection.prepareCall(query);){
-            callableStatement.setInt(1,iceCream.getIceCreamId());
-            callableStatement.setInt(2, iceCream.getCategoryId());
-            callableStatement.setString(3, iceCream.getName());
-            callableStatement.setInt(4, iceCream.getDiscount());
-            callableStatement.setString(5, iceCream.getDescription());
-            callableStatement.setDouble(6, iceCream.getPrice());
-            callableStatement.setString(7, iceCream.getSrc());
-            callableStatement.setInt(8, iceCream.getSoldQuantity());
-            updateIceCream = callableStatement.executeUpdate() > 0;
-        }catch (SQLException e){
-            e.getMessage();
-            e.printStackTrace();
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_ICECREAM)) {
+            preparedStatement.setInt(8,iceCream.getIceCreamId());
+            preparedStatement.setInt(1, iceCream.getCategoryId());
+            preparedStatement.setString(2, iceCream.getName());
+            preparedStatement.setInt(3, iceCream.getDiscount());
+            preparedStatement.setString(4, iceCream.getDescription());
+            preparedStatement.setDouble(5, iceCream.getPrice());
+            preparedStatement.setString(7, iceCream.getSrc());
+            preparedStatement.setInt(6, iceCream.getSoldQuantity());
+            updateIceCream = preparedStatement.executeUpdate()>0;
         }
         return updateIceCream;
     }
 
     @Override
-    public IceCream searchIceCream(int id) throws SQLException {
+    public IceCream searchIceCream(int id) {
         IceCream iceCream = null;
-        String query = "{call search_ice_cream_by_id(?);}";
+        String query = "{call search_ice_cream_by_id(?)}";
         try(Connection connection = getConnection();
             CallableStatement callableStatement = connection.prepareCall(query);){
             callableStatement.setInt(1, id);
@@ -143,7 +139,7 @@ public class IceCreamDAO implements IiceCreamDAO {
     @Override
     public List<IceCream> searchIceCreamByCategory(int idCategory) throws SQLException {
         List<IceCream> iceCreams = new ArrayList<>();
-        String query = "{Call get_ice_cream_by_category(?);}";
+        String query = "{Call get_ice_cream_by_category(?)}";
         try(Connection connection = getConnection();
             CallableStatement callableStatement = connection.prepareCall(query);){
             callableStatement.setInt(1, idCategory);
@@ -172,7 +168,7 @@ public class IceCreamDAO implements IiceCreamDAO {
         List<IceCream> iceCreamsName = new ArrayList<>();
         try {
             for (IceCream ice: iceCreams) {
-                if (ice.getName().contains(name)){
+                if (ice.getName().toLowerCase().contains(name.toLowerCase())){
                     iceCreamsName.add(ice);
                 }
             }
@@ -186,7 +182,7 @@ public class IceCreamDAO implements IiceCreamDAO {
     @Override
     public List<IceCream> sortIceCreamByPrice(String Price) throws SQLException {
         List<IceCream> iceCreams = new ArrayList<>();
-        String query = "{Call sort_ice_cream_by_price();}";
+        String query = "{Call sort_ice_cream_by_price()}";
         try(Connection connection = getConnection();
             CallableStatement callableStatement = connection.prepareCall(query);){
             ResultSet rs = callableStatement.executeQuery();
@@ -211,7 +207,7 @@ public class IceCreamDAO implements IiceCreamDAO {
     @Override
     public List<IceCream> sortIceCreambyQuantity(String Quantity) throws SQLException {
         List<IceCream> iceCreams = new ArrayList<>();
-        String query = "{Call sort_ice_cream_by_quantity();}";
+        String query = "{Call sort_ice_cream_by_quantity()}";
         try(Connection connection = getConnection();
             CallableStatement callableStatement = connection.prepareCall(query);){
             ResultSet rs = callableStatement.executeQuery();

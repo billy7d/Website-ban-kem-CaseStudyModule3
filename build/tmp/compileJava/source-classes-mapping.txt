@@ -1,7 +1,7 @@
+model/Category.java
+ model.Category
 model/Orders.java
  model.Orders
-service/IceCreamDAO.java
- service.IceCreamDAO
 model/IceCream.java
  model.IceCream
 service/copyIceCreamDAO.java
@@ -12,11 +12,13 @@ service/UserDAO.java
  service.UserDAO
 model/Users.java
  model.Users
-model/Item.java
- model.Item
 service/IUserDAO.java
  service.IUserDAO
-model/Category.java
- model.Category
+model/Item.java
+ model.Item
+controller/CartServlet.java
+ controller.CartServlet
+service/IceCreamDAO.java
+ service.IceCreamDAO
 controller/UserServlet.java
  controller.UserServlet

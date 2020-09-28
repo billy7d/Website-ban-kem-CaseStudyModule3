@@ -13,12 +13,14 @@ public class IceCream {
     public IceCream(){
     }
 
-    public IceCream(int categoryId, String name, double price, String description, String src){
+    public IceCream(int categoryId, String name, double price, int discount, String description, String src, int soldQuantity){
         this.categoryId = categoryId;
         this.name = name;
         this.price = price;
         this.description = description;
         this.src = src;
+        this.discount = discount;
+        this.soldQuantity = soldQuantity;
     }
 
     public IceCream(int iceCreamId,int categoryId, String name, double price, int discount, String description, int soldQuantity ,String src){
