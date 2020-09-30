@@ -57,6 +57,7 @@
     }
 </style>
 <body>
+
 <nav class="navbar navbar-expand-sm bg-light navbar-light sticky-top">
     <a class="navbar-brand" href="/trangchu"><img src="https://i.pinimg.com/236x/35/93/fc/3593fc6c1af7ea7c1560cb08400d5694.jpg" width="50px" height="50px"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
@@ -64,19 +65,24 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav">
-<%--            <li class="nav-item">--%>
-<%--                <a class="nav-link active" href="#">Menu</a>--%>
-<%--            </li>--%>
-<%--            <li class="nav-item">--%>
-<%--                <a class="nav-link" href="#">Discounts</a>--%>
-<%--            </li>--%>
-<%--            <li class="nav-item">--%>
-<%--                <a class="nav-link" href="#">Funfacts</a>--%>
-<%--            </li>--%>
+
             <li>
                 <form class="form-inline my-2 my-lg-0" action="/trangchu?action=search" method="post">
                     <input style="color: hotpink; border: hotpink" class="form-control" type="search" placeholder="Search" aria-label="Search" name="search">
                     <button type="submit" class="btn btn-outline-danger"><i class="fa fa-search"></i></button>
+                </form>
+            </li>
+            <li>
+                <c:set var="quantity" value="0"></c:set>
+                <c:forEach var="item" items="${sessionScope.cart}">
+                    <c:set var="quantity" value="${quantity + item.quantity}"></c:set>
+                </c:forEach>
+                <tr>
+                <form method="post" action="/cart?action=pay">
+                    <button type="submit" class="btn btn-outline-danger" style="float: right; position:absolute ; right: 90px">
+                        Order
+                        <i class="fa fa-shopping-cart"></i>   ${quantity}
+                    </button>
                 </form>
             </li>
             <li class="nav-item">
@@ -84,10 +90,6 @@
                     <button type="submit" class="btn btn-outline-danger" style=" position:absolute ; right: 15px; top:auto" >login</button>
                 </form>
             </li>
-            <li>
-                <button type="button" class="btn btn-outline-danger" style="float: right; position:absolute ; right: 90px">Order  <i class="fa fa-shopping-cart"></i></button>
-            </li>
-
         </ul>
     </div>
 </nav>
@@ -155,6 +157,7 @@
         </c:forEach>
     </div>
 </div>
+
 <div class="container-fluid">
     <div class="row jumbotron">
         <div class="col"><a href="#"><img src="https://i.pinimg.com/236x/41/b0/ed/41b0edd10bd1fcca1833c2e651fcfdaa.jpg" width="70px" class="footer-img"></a></div>

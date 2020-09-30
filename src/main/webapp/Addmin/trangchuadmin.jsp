@@ -305,7 +305,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
 <%--                        <button type="submit" class="btn btn-primary">Create New</button>--%>
-                        <button type="submit" class="btn btn-outline-danger" data-toggle="modal" data-target="#announceAdd">
+                        <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Successfully hjhj')">
                             Create New
                         </button>
                     </div>
@@ -313,26 +313,6 @@
             </div>
         </div>
     </form>
-
-
-    <!-- The Modal Update -->
-    <div class="modal" id="announceAdd">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    Thêm Mới Thành Công
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
 
 

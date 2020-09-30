@@ -34,7 +34,7 @@ public class IceCreamDAO implements IiceCreamDAO {
     public boolean insertIceCream(IceCream iceCream) throws SQLException {
         boolean isInsertIceCream = false;
         String query="{CALL insert_IceCream(?,?,?,?,?,?,?)}";
-        try(Connection connection =getConnection();
+        try(Connection connection = getConnection();
             CallableStatement callableStatement = connection.prepareCall(query);) {
             callableStatement.setInt(1, iceCream.getCategoryId());
             callableStatement.setString(2,iceCream.getName());
