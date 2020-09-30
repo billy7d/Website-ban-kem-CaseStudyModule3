@@ -64,12 +64,8 @@ public class UserServlet extends HttpServlet {
         }
         try {
             switch (action){
-                case "create":
-                    break;
-                case "edit":
-
-                    break;
-                case "sort":
+                case "trangchuadmin":
+                    listIceCreamAdmin(request,response);
                     break;
                 default:
                     listIceCream(request, response);

@@ -85,7 +85,9 @@
                     </form>
                 </li>
                 <li class="nav-item">
-                    <button type="button" class="btn btn-outline-danger" style="float: right; position:absolute ; right: 110px">List Order  <i class="fa fa-shopping-cart"></i></button>
+                    <form method="post" action="/cart?action=listorder">
+                        <button type="submit" class="btn btn-outline-danger" style="float: right; position:absolute ; right: 110px">List Order  <i class="fa fa-shopping-cart"></i></button>
+                    </form>
                 </li>
                 <li class="nav-item">
                     <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#addNewProduct" style="float: right; position:absolute ; right: 242px">Create new product</button>
@@ -148,7 +150,7 @@
         <div class="row">
             <c:forEach var="iceCream" items="${listIceCream}" >
                 <div class="col-sm-6 col-md-4">
-                    <div class="card"  style="width: 262px;">
+                    <div class="card"  style="width: 262px; height: 530px; margin-bottom: 50px">
                         <p hidden name="id" ><c:out value="${iceCream.iceCreamId}"/></p>
                         <img class="card-img-top" src="${iceCream.src}">
                         <div class="card-body">
@@ -305,7 +307,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
 <%--                        <button type="submit" class="btn btn-primary">Create New</button>--%>
-                        <button type="submit" class="btn btn-outline-danger" data-toggle="modal" data-target="#announceAdd">
+                        <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Successfully hjhj')">
                             Create New
                         </button>
                     </div>
@@ -313,26 +315,6 @@
             </div>
         </div>
     </form>
-
-
-    <!-- The Modal Update -->
-    <div class="modal" id="announceAdd">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    Thêm Mới Thành Công
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
 
 
