@@ -10,7 +10,7 @@ public class IceCreamDAO implements IiceCreamDAO {
     private static final String UPDATE_ICECREAM = "update ice_cream SET category_id = ?, name = ?, discount = ?, ice_description = ?, price = ?, sold_quantity = ?, src = ? WHERE ice_cream_id = ? " ;
     private String jdbcURL="jdbc:mysql://localhost:3306/ice_cream_shop?userSSL=false";
     private String jdbcUsername = "root";
-    private String jbdcPassword = "123456";
+    private String jbdcPassword = "hung30111995";
 
 
     public IceCreamDAO(){
