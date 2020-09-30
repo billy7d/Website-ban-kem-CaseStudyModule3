@@ -1,12 +1,14 @@
 package service;
 
+import model.IceCream;
 import model.Item;
 import model.Orders;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import javax.persistence.criteria.Order;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class OrderDAO {
     private String jdbcURL="jdbc:mysql://localhost:3306/ice_cream_shop?userSSL=false";
@@ -46,6 +48,67 @@ public class OrderDAO {
             e.printStackTrace();
         }
         return isInsertOrder;
+    }
+
+    public int selectLastId()throws SQLException{
+        int lastID = 0;
+        String query = "{CALL select_id_last()}";
+        try(Connection connection = getConnection();
+        CallableStatement callableStatement = connection.prepareCall(query)){
+            ResultSet resultSet = callableStatement.executeQuery();
+            while (resultSet.next()){
+                lastID = resultSet.getInt("order_id");
+            }
+        }
+        return lastID;
+    }
+
+
+
+    public List<Item> selectALLItem() throws SQLException{
+        List<Item> items = new ArrayList<>();
+        String query = "{CALL select_all_item()}";
+        try(Connection connection = getConnection();
+            CallableStatement callableStatement = connection.prepareCall(query)){
+            ResultSet resultSet = callableStatement.executeQuery();
+            while (resultSet.next()){
+                int item = resultSet.getInt("item_id");
+                int orderid = resultSet.getInt("order_id");
+                int ice_id = resultSet.getInt("ice_cream_id");
+                double discount = resultSet.getDouble("pice_discount");
+                int quality = resultSet.getInt("quality");
+                double total = resultSet.getDouble("total_money");
+                items.add(new Item(item,orderid,ice_id, quality));
+            }
+        }
+        return items;
+    }
+
+    public List<Orders> selectAllOrder()throws SQLException {
+        ArrayList<Orders> orders = new ArrayList<>();
+        String query = "{CALL select_all()}";
+        List<Item> itemALL = selectALLItem();
+        List<Item> itemOrderID = null;
+        try(Connection connection = getConnection();
+            CallableStatement callableStatement = connection.prepareCall(query)) {
+            ResultSet resultSet = callableStatement.executeQuery();
+            while (resultSet.next()){
+                int orderID = resultSet.getInt("order_id");
+                String name = resultSet.getString("name_customer");
+                String numberPhone = resultSet.getString("numberphone_customer");
+                String address = resultSet.getString("address_customer");
+                double total = resultSet.getDouble("total_money");
+                for ( Item items: itemALL) {
+                    itemOrderID = new ArrayList<>();
+                    if (items.getOrderId() == orderID){
+                        itemOrderID.add(items);
+                    }
+                }
+                orders.add(new Orders(orderID, name,address, numberPhone, itemOrderID));
+            }
+        }
+
+        return orders;
     }
 
 }

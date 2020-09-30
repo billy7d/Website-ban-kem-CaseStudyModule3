@@ -11,7 +11,16 @@ public class Item {
     public Item(){
     }
 
-    public Item(int orderId, int iceCreamId, int quality){
+    public Item( int itemId, int orderId, int iceCreamId, int quantity, int price){
+        this.itemId= itemId;
+        this.orderId =orderId;
+        this.iceCreamId =iceCreamId;
+        this.quantity =quantity;
+        this.price =price;
+    }
+
+    public Item(int itemId, int orderId, int iceCreamId, int quality){
+        this.itemId=itemId;
         this.orderId = orderId;
         this.iceCreamId = iceCreamId;
         this.quantity = quality;

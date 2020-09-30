@@ -85,7 +85,9 @@
                     </form>
                 </li>
                 <li class="nav-item">
-                    <button type="button" class="btn btn-outline-danger" style="float: right; position:absolute ; right: 110px">List Order  <i class="fa fa-shopping-cart"></i></button>
+                    <form method="post" action="/cart?action=listorder">
+                        <button type="submit" class="btn btn-outline-danger" style="float: right; position:absolute ; right: 110px">List Order  <i class="fa fa-shopping-cart"></i></button>
+                    </form>
                 </li>
                 <li class="nav-item">
                     <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#addNewProduct" style="float: right; position:absolute ; right: 242px">Create new product</button>

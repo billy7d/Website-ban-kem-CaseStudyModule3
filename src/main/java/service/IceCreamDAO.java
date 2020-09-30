@@ -54,7 +54,8 @@ public class IceCreamDAO implements IiceCreamDAO {
     @Override
     public List<IceCream> selectAllIceCream() throws SQLException {
         ArrayList<IceCream> iceCreams = new ArrayList<>();
-        String query = "{CALL select_all_ice()}";
+        String query = "{CALL select_all_ice_by_status()}";
+//        String query = "{CALL select_all_ice()}";
         try(Connection connection =getConnection();
             CallableStatement callableStatement = connection.prepareCall(query)){
             System.out.println(callableStatement);
@@ -80,7 +81,8 @@ public class IceCreamDAO implements IiceCreamDAO {
     @Override
     public boolean deleteIceCream(int id) throws SQLException {
         boolean rowDeleted = false;
-        String query = "{CALL delete_ice(?)}";
+//        String query = "{CALL delete_ice(?)}";
+        String query = "{CALL delete_ice_status(?)}";
         try(Connection connection = getConnection();
             CallableStatement callableStatement = connection.prepareCall(query)){
             callableStatement.setInt(1,id);

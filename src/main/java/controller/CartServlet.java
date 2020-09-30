@@ -1,5 +1,6 @@
 package controller;
 
+import model.IceCream;
 import model.Item;
 import model.Orders;
 import service.IceCreamDAO;
@@ -31,7 +32,14 @@ public class CartServlet extends HttpServlet {
         }else if (action.equals("inforcustomer")){
             try {
                 creatOrder(request,response);
-                displayCart(request,response);
+                creatItem(request,response);
+                tranghchu(request,response);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }else if (action.equals("listorder")){
+            try {
+                listOrder(request,response);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -57,6 +65,11 @@ public class CartServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+    protected void tranghchu(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("Customer/trangchu.jsp");
+        dispatcher.forward(request, response);
+    }
+
 
 
     protected void order(HttpServletRequest request,HttpServletResponse response) throws IOException {
@@ -64,7 +77,9 @@ public class CartServlet extends HttpServlet {
         HttpSession session = request.getSession();
         if (session.getAttribute("cart")==null){
             List<Item> cart = new ArrayList<>();
-            cart.add(new Item(iceCreamDAO.searchIceCream(Integer.parseInt(request.getParameter("id"))),1));
+            int id = Integer.parseInt(request.getParameter("id"));
+            Item item = new Item(iceCreamDAO.searchIceCream(Integer.parseInt(request.getParameter("id"))), 1);
+            cart.add(item);
             session.setAttribute("cart",cart);
         } else {
             List<Item> cart = (List<Item>) session.getAttribute("cart");
@@ -81,6 +96,14 @@ public class CartServlet extends HttpServlet {
             session.setAttribute("cart",cart);
         }
         response.sendRedirect("/trangchu");
+    }
+
+    protected void listOrder(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException, SQLException {
+        List<Orders> orders = orderDAO.selectAllOrder();
+        System.out.println(orders.get(0).getOrderId());
+        request.setAttribute("listorder", orders);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("Addmin/ListOrders.jsp");
+        dispatcher.forward(request, response);
     }
 
 
@@ -134,12 +157,14 @@ public class CartServlet extends HttpServlet {
     }
 
 
-    protected void creatItem(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
+    protected void creatItem(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException, SQLException {
         HttpSession session = request.getSession();
         List<Item> cart = (List<Item>) session.getAttribute("cart");
-
-        request.setAttribute("cart", cart);
-        displayCart(request,response);
+        int orderID = orderDAO.selectLastId();
+        for (Item item:cart) {
+            item.setOrderId(orderID);
+            itemDAO.insertItem(item);
+        }
     }
 
 

@@ -1,5 +1,6 @@
 package model;
 
+import javax.persistence.criteria.Order;
 import java.util.List;
 
 public class Orders {
@@ -26,12 +27,20 @@ public class Orders {
         this.items = items;
     }
 
-    public int getOrder() {
+    public Orders(int orderId,String nameCustomer, String addressCustomer, String numberPhoneCustomer, List<Item> items){
+        this.orderId = orderId;
+        this.nameCustomer = nameCustomer;
+        this.addressCustomer = addressCustomer;
+        this.numberPhoneCustomer = numberPhoneCustomer;
+        this.items = items;
+    }
+
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrder(int order) {
-        this.orderId = order;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     public String getNameCustomer() {

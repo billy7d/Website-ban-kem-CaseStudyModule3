@@ -1,12 +1,12 @@
 package service;
 
 import model.Item;
+import model.Orders;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class ItemDAO {
 
@@ -40,13 +40,15 @@ public class ItemDAO {
         try (Connection connection = getConnection();
             CallableStatement callableStatement = connection.prepareCall(query);){
             callableStatement.setInt(1, item.getOrderId());
-            callableStatement.setInt(2, item.getIceCreamId());
+            callableStatement.setInt(2, item.getIceCream().getIceCreamId());
             callableStatement.setDouble(3,pricediscount);
             callableStatement.setInt(4,item.getQuantity());
             callableStatement.setDouble(5, total);
+            callableStatement.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();
         }
         return IsInsertItem;
     }
+
 }
