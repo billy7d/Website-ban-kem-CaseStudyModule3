@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+<a class="btn btn-outline-danger" href="/trangchu?action=trangchuadmin">trở về</a>
     <table cellpadding="2" cellspacing="2" border="1">
         <tr>
             <th>STT</th>
@@ -33,45 +34,15 @@
                 <td>${orders.addressCustomer}</td>
                 <td>${orders.numberPhoneCustomer}</td>
                 <td>
-                    <!-- Button to Open the Modal Delete-->
-                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#itemdetail${orders.orderId}">
-                        Detail
-                    </button>
+                    <!-- Button to Open the Modal-->
+                    <form method="post" action="/cart?action=detail">
+                        <button type="button" class="btn btn-outline-danger">
+                            Detail
+                        </button>
+                    </form>
+
                 </td>
             </tr>
-
-
-            <!-- The Modal Delete -->
-            <div class="modal fade" id="itemdetail${orders.orderId}" tabindex="-1" role="dialog"
-                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div class="container">
-                                <div class="form-group">
-                                    <label>Detail Order ${orders.orderId}</label>
-                                    <tr>
-                                        <th>Name IceCream</th>
-                                        <th>Quantity</th>
-                                        <th>Price</th>
-                                        <th>DisCount</th>
-                                    </tr>
-                                    <c:forEach var="item" items="${orders.items}">
-                                        <tr>
-                                            <td>${item.iceCream.name}</td>
-                                            <td>${item.quantity}</td>
-                                            <td>${item.iceCream.price}</td>
-                                            <td>${item.iceCream.discount}</td>
-                                        </tr>
-                                    </c:forEach>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
         </c:forEach>
     </table>
 

@@ -33,7 +33,7 @@ public class CartServlet extends HttpServlet {
             try {
                 creatOrder(request,response);
                 creatItem(request,response);
-                tranghchu(request,response);
+                deleteSection(request,response);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -70,7 +70,12 @@ public class CartServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-
+    private void deleteSection(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        List<Item> cart = new ArrayList<>();
+        session.setAttribute("cart",cart);
+        response.sendRedirect("/trangchu");
+    }
 
     protected void order(HttpServletRequest request,HttpServletResponse response) throws IOException {
         IceCreamDAO iceCreamDAO = new IceCreamDAO();

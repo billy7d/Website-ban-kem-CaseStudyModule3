@@ -150,7 +150,7 @@
         <div class="row">
             <c:forEach var="iceCream" items="${listIceCream}" >
                 <div class="col-sm-6 col-md-4">
-                    <div class="card"  style="width: 262px;">
+                    <div class="card"  style="width: 262px; height: 530px; margin-bottom: 50px">
                         <p hidden name="id" ><c:out value="${iceCream.iceCreamId}"/></p>
                         <img class="card-img-top" src="${iceCream.src}">
                         <div class="card-body">

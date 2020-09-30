@@ -12,15 +12,15 @@ service/UserDAO.java
  service.UserDAO
 model/Users.java
  model.Users
-controller/UserServlet.java
- controller.UserServlet
+service/ItemDAO.java
+ service.ItemDAO
 model/Item.java
  model.Item
 model/Orders.java
  model.Orders
 service/OrderDAO.java
  service.OrderDAO
+controller/UserServlet.java
+ controller.UserServlet
 controller/CartServlet.java
  controller.CartServlet
-service/ItemDAO.java
- service.ItemDAO

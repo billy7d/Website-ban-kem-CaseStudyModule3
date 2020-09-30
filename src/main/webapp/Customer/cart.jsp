@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <a href="${pageContext.request.contextPath}/trangchu">Continue shopping</a>
+    <a class="btn btn-outline-danger" href="${pageContext.request.contextPath}/trangchu">Continue shopping</a>
 
     <table cellpadding="2" cellspacing="2" border="1">
         <tr>
@@ -40,17 +40,13 @@
                 <td><img src="${item.iceCream.src}" width="120px"></td>
                 <td>${item.iceCream.name}</td>
                 <td>${item.iceCream.price}</td>
-                <td>${item.iceCream.discount}</td>
+                <td>${item.iceCream.discount}%</td>
                 <td>
                     <a class="btn btn-outline-danger"  href="${pageContext.request.contextPath}/cart?action=remove&id=${item.iceCream.iceCreamId}">-</a>
                         ${item.quantity}
                     <a class="btn btn-outline-danger" href="${pageContext.request.contextPath}/cart?action=increase&id=${item.iceCream.iceCreamId}">+</a>
                 </td>
                 <td>${item.iceCream.price*item.quantity}</td>
-                    <%--                            <td align="center">--%>
-                    <%--                                <a href="${pageContext.request.contextPath}/cart?action=remove&id=${item.iceCream.iceCreamId}"--%>
-                    <%--                                   onclick="return confirm('Are you sure?')">Remove</a>--%>
-                    <%--                            </td>--%>
             </tr>
         </c:forEach>
         <tr>
